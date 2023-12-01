@@ -1,47 +1,28 @@
 import './App.css';
-import { User } from './components/User.js';
-// import { User } from './Components/User';
-
-
+import { Planets } from './components/Planets';
 
 const App = () => {
 
-    const users = [
-        {
-            name: "Neeraj",
-            age: 21,
-            email: "neeraj@gmail.com"
-        },
-        {
-            name: "jagan",
-            age: 19,
-            email: "jagan@gmail.com"
-        },
-        {
-            name: "shiva",
-            age: 51,
-            email: "shiva@gmail.com"
-        }
+    const planets = [
+        {name:'mars', isGasPlanet: false},
+        {name:'earth', isGasPlanet: false},
+        {name:'jupiter', isGasPlanet: true},
+        {name:'venus', isGasPlanet: false},
+        {name:'neptune', isGasPlanet: true},
+        {name:'uranus', isGasPlanet: true},
     ]
 
 
     return (
         <div className="App">
-            {users.map((user, key) => {
-                return (
-                    <div>
-                        <h1 key={key}>{user.name}</h1>
-                        <h2 key={key}>{user.age}</h2>
-                        <h3 key={key}>{user.email}</h3>
-                    </div>
-                )
-            })}
+            {planets.map((planet, key) => {
 
-            {users.map((user, key) => {
-                return (
-                    <User key={key} name={user.name} age={user.age} email={user.email} />
-                )
+                if(planet.isGasPlanet) return ( <h1>{planet.name}</h1> )
 
+                // return (
+                //     <Planets name={planet.name} isGasPlanet={planet.isGasPlanet} />
+                //     // planet.isGasPlanet ? 
+                // )
             })}
         </div>
     );
