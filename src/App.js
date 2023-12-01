@@ -3,35 +3,27 @@ import { useState } from 'react'
 
 const App = () => {
 
-    const [text, setText] = useState('I am Neeraj Dattu');
-    const [display, setDisplay] = useState(false);
-    const [color, setColor] = useState('rgb(0,0,0)')
-
-    const updatetext = () => {
-        if(display === true) {
-            setText('I am Neeraj Dattu');
-            setDisplay(false);
-        }
-        else {
-            setText('');
-            setDisplay(true);
-        }
+    const [count, setCount] = useState(0)
+    
+    const increase = () => {
+        setCount(count + 1)
     }
 
-    const changecolor = () => {
-        var min = 0, max = 255;
-        const r = min + (Math.random() * (max - min));
-        const g = min + (Math.random() * (max - min));
-        const b = min + (Math.random() * (max - min));
-        console.log(r, g, b);        
-        setColor('rgb(' + r + ',' + g + ',' + b);
+    const decrease = () => {
+        setCount(count - 1)
     }
+
+    const setzero = () => {
+        setCount(0);
+    }
+
 
     return (
         <div className="App">
-            <button onClick={updatetext}>Show/Hide</button>
-            <h1 style={{color: color}}>{text}</h1>
-            <button onClick={changecolor}>change color</button>
+            <button onClick={increase}>increase</button>
+            <button onClick={decrease}>decrease</button>
+            <button onClick={setzero}>set to zero</button>
+            <h1>{count}</h1>
         </div>
     );
 }
