@@ -3,21 +3,16 @@ import { useState } from 'react'
 
 const App = () => {
 
-    const [num, setNum] = useState(0);
+    const [text, setText] = useState('');
 
-    const increase = () => {
-        setNum(num + 1);
-    }
-    
-    const decrease = () => {
-        setNum(num - 1);
+    const updatetext = (event) => {
+        setText(event.target.value);
     }
 
     return (
         <div className="App">
-            <button onClick={decrease}>Decrease num</button>
-            <h1>{num}</h1>
-            <button onClick={increase}>Increase num</button>
+            <input type='text' onChange={updatetext} />
+            <h1>{text}</h1>
         </div>
     );
 }
