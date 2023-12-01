@@ -1,17 +1,16 @@
 import './App.css';
+import { useState } from 'react'
 
 const App = () => {
 
-    var num = 0;
+    const [num, setNum] = useState(0);
 
     const increase = () => {
-        num += 1;
-        console.log(num);
+        setNum(num + 1);
     }
-
+    
     const decrease = () => {
-        num -=1 ;
-        console.log(num);
+        setNum(num - 1);
     }
 
     return (
