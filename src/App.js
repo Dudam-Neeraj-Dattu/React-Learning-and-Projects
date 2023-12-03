@@ -1,29 +1,32 @@
 import './App.css';
-// import react from 'react'
 import { useState } from 'react';
+
 
 const App = () => {
 
   // var text = '';
   const [text, setText] = useState('');
+  const [name, setName] = useState(null)
 
   const fetchapi = () => {
-
-    // setInterval(() => {
-    fetch("https://catfact.ninja/fact")
+    fetch(`https://api.agify.io/?name=${name}`)
       .then((res) => res.json())
       .then((data) => {
-        setText(data.fact);        
+        setText(data);
       })
-    // }, 5000);
-
-
   }
 
   return (
     <div className="App">
-      <button onClick={fetchapi} >Generate Cat Fact</button>
-      <p>{text}</p>
+      <input
+        onChange={(e) => { setName(e.target.value) }}
+        type="text"
+        name="" id=""
+        placeholder='Enter the name'
+      />
+      <br />
+      <button onClick={fetchapi} >Predict Age</button>
+      <p>{text?.age}</p>
     </div>
   );
 }
