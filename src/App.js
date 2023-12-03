@@ -39,7 +39,7 @@ const App = () => {
             return name.id !== key
         }));
 
-        setPendingTasks(pendingtasks - 1);
+        setPendingTasks(pendingtasks !== 0 ? pendingtasks - 1 : pendingtasks);
         setTotalTasks(totaltasks - 1);
     }
 

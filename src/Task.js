@@ -11,7 +11,7 @@ export const Task = (props) => {
             </div>
             <div className="buttons">
                 <button onClick={() => props.deleteList(props.id)}>Delete</button>
-                <button onClick={() => props.complete(props.id)} >Complete</button>
+                <button onClick={() => props.complete(props.id)} style={{display: props.completed ? 'none' : ''}}>Complete</button>
             </div>
         </div>
     )
