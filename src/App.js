@@ -1,32 +1,29 @@
 import './App.css';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 
 const App = () => {
 
-  // var text = '';
-  const [text, setText] = useState('');
-  const [name, setName] = useState(null)
+  const [text, setText] = useState('')
 
-  const fetchapi = () => {
-    fetch(`https://api.agify.io/?name=${name}`)
+  const fetchapi = (category) => {
+    fetch(`https://excuser-three.vercel.app/v1/excuse/${category}/`)
       .then((res) => res.json())
       .then((data) => {
-        setText(data);
+        setText(data[0].excuse);
+        console.log(data[0])
       })
   }
 
   return (
     <div className="App">
-      <input
-        onChange={(e) => { setName(e.target.value) }}
-        type="text"
-        name="" id=""
-        placeholder='Enter the name'
-      />
+      <h1>Excuser</h1>      
+      <button onClick={() => fetchapi('family')}>Family</button>
       <br />
-      <button onClick={fetchapi} >Predict Age</button>
-      <p>{text?.age}</p>
+      <button onClick={() => fetchapi('party')}>Party</button>
+      <br />
+      <button onClick={() => fetchapi('office')}>Office</button>
+      <p>{text}</p>
     </div>
   );
 }
