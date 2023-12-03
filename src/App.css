@@ -12,7 +12,7 @@ body {
 
 .App .addTask {
   background-color: rgb(175, 255, 255);
-  height: 100px;
+  height: 120px;
   align-content: center;
   padding: 40px;
   border-radius: 5px;
@@ -38,10 +38,9 @@ body {
   color:darkmagenta;
 }
 
-.App .showTask {
-  /* margin-top:  10px; */
+.App .addTask .numoftasks {
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
-
 .App .showTask .taskName {
   border-radius: 5px;
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;

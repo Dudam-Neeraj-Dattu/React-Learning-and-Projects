@@ -5,7 +5,9 @@ import { Task } from './Task';
 const App = () => {
 
     const [task, setTask] = useState('')
-    const [list, setList] = useState([]);    
+    const [list, setList] = useState([]);
+    const [totaltasks, setTotalTasks] = useState(0);
+    const [pendingtasks, setPendingTasks] = useState(0);
 
     const taskText = (event) => {
         setTask(event.target.value)
@@ -21,7 +23,9 @@ const App = () => {
                     completed: false,
                 }
             );
-            setList(updatedList);            
+            setList(updatedList);
+            setTotalTasks(updatedList.length)
+            setPendingTasks(updatedList.length)
             document.getElementById('text').value = '';
             setTask('');
         }
@@ -30,10 +34,13 @@ const App = () => {
         }
     }
 
-    const deleteList = (key) => {        
+    const deleteList = (key) => {
         setList(list.filter((name) => {
             return name.id !== key
         }));
+
+        setPendingTasks(pendingtasks - 1);
+        setTotalTasks(totaltasks - 1);
     }
 
     const complete = (id) => {
@@ -41,16 +48,18 @@ const App = () => {
         setList(
             list.map((task) => {
                 if (task.id === id) {
-                    return {                    
+                    return {
                         ...task,
                         completed: true
                     }
                 }
-                else{
+                else {
                     return task;
                 }
             })
-        ) 
+        )
+
+        setPendingTasks(pendingtasks - 1);
 
     }
 
@@ -60,6 +69,18 @@ const App = () => {
                 <input type="text" id='text' onChange={taskText} />
                 <br />
                 <button id='addtask' onClick={updateList}>Add Task</button>
+                <div
+                    className="numoftasks"
+                    style={{
+                        display: 'flex',
+                        justifyContent: 'center',
+                        gap: '20px',
+                        marginTop: '10px',
+                        marginBottom: '10px'
+                    }}>
+                    <h3>Total Tasks : {totaltasks}</h3>
+                    <h3>Pending Tasks : {pendingtasks}</h3>
+                </div>
             </div>
             <div className="showTask">
                 {list.map((taskname) => {
